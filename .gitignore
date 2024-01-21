@@ -1,3 +1,8 @@
-node_modules
 .idx
+.env
+
+node_modules
 package-lock.json
+yarn.lock
+prisma/**.db
+prisma/**.db-journal
