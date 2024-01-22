@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["openssl-1.1.x"]
+}
+
+datasource db {
+  provider      = "sqlite"
+  url           = env("DATABASE_URL")
+}
+
+model Author {
+  id    Int    @id @default(autoincrement())
+  name  String
+  bio   String
+  email String
+  post  Post[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  subtitle  String
+  content   String
+  image     String?
+  authorId  Int      @map("author_id")
+  author    Author   @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
