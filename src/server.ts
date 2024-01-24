@@ -4,7 +4,7 @@ import express from 'express'
 import { prisma } from './lib/prisma'
 import { router } from './routes'
 
-const app = express()
+export const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
